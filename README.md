@@ -1,2 +1,2 @@
 # sportspot
-App to keep peaople active
+App to keep people active
