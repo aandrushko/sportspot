@@ -23,7 +23,6 @@ export const createProject = (project) => {
 export const deleteProject = (project) => {
     return (dispatch, getState, {getFireBase, getFirestore}) => {
         const firestore = getFirestore();
-        debugger
         dispatch({
             type: 'DELETE_PROJECT',
             project
