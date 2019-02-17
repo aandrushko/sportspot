@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
 import { Calendar } from 'react-calendar';
-import DropdownExampleSearchSelectionTwo from './GameTypes';
+import GameTypes from './GameTypes';
+import './project.css';
+
 
 export class CreateProject extends Component {
     constructor(props) {
@@ -48,12 +50,16 @@ export class CreateProject extends Component {
             <label htmlFor="title">Title</label>
             <input onChange={this.changeField} type="text" id="title" />
 
-            <label htmlFor="title">Game Type</label>
-            <DropdownExampleSearchSelectionTwo value={this.state.gameType}/>
+            <div className='game-types'>
+                <label htmlFor="title">Game Type</label>
+                <GameTypes value={this.state.gameType}/>
+            </div>
 
-            <label htmlFor="date">Game Date</label>
-            <Calendar tileDisabled={({date}) => this.disableInactiveDays(date)} onChange={this.changeDate} value ={new Date(this.state.date)} />
-            
+            <div className='calendar'>
+                <label htmlFor="date">Game Date</label>
+                <Calendar tileDisabled={({date}) => this.disableInactiveDays(date)} onChange={this.changeDate} value ={new Date(this.state.date)} />
+            </div>
+
             <div className="input-field">
                 <button className="btn pink lighten-1 z-depth-0">Create Project</button>
             </div>

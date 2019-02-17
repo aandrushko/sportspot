@@ -1,18 +1,16 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import Select from 'react-select';
 
 const options = [
-    {key:1,text:'Football'},
-    {key:2,text:'BasketBall'},
-    {key:3,text:'Hokey'}
+    {value:1,label:'Football'},
+    {value:2,label:'BasketBall'},
+    {value:3,label:'Hokey'}
 ]
 
 const GameTypes = (props) => {
 
     return (
-        <div>
-            <Dropdown options={options} fluid selection />
-        </div>
+            <Select options={options} value={options[0]}/>
     )
 }
 

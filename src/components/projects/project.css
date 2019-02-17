@@ -1,0 +1,9 @@
+.game-types {
+    width: 35%;
+    display: inline-block;
+}
+.calendar {
+    width: 40%;
+    padding-left: 40px;
+    display: inline-block;
+}
