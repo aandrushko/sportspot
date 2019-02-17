@@ -4,7 +4,7 @@ import { createProject } from '../../store/actions/projectActions';
 import { Calendar } from 'react-calendar';
 import GameTypes from './GameTypes';
 import './project.css';
-
+import { Redirect } from 'react-router-dom';
 
 export class CreateProject extends Component {
     constructor(props) {
@@ -42,6 +42,7 @@ export class CreateProject extends Component {
     }
     
     render() {
+    if(!this.props.firebase.auth.uid) return <Redirect to='/signin'/>
     return (
       <div className="container">
         <form onSubmit={this.submitForm} className="white">
@@ -68,11 +69,16 @@ export class CreateProject extends Component {
     )
   }
 }
+const mapStateToProps = (state) =>{
+    return {
+        ...state
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createProject: (project) => dispatch(createProject(project))
     }
-
 }
 
-export default connect(null, mapDispatchToProps)(CreateProject)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject)

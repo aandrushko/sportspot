@@ -23,9 +23,9 @@ export const createProject = (project) => {
 export const deleteProject = (project) => {
     return (dispatch, getState, {getFireBase, getFirestore}) => {
         const firestore = getFirestore();
-        dispatch({
-            type: 'DELETE_PROJECT',
-            project
-        });
+             dispatch({
+                type: 'DELETE_PROJECT',
+                project
+            });
     }
 }
