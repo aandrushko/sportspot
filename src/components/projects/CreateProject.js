@@ -5,6 +5,7 @@ import { Calendar } from 'react-calendar';
 import GameTypes from './GameTypes';
 import './project.css';
 import { Redirect } from 'react-router-dom';
+import PlayerList from './PlayersList';
 
 export class CreateProject extends Component {
     constructor(props) {
@@ -26,8 +27,15 @@ export class CreateProject extends Component {
         this.props.createProject(this.state)
     }
     changeField =(e)=> {
+        debugger;
         this.setState({
             [e.target.id]: e.target.value
+        })
+    }
+    changePlayers =(e)=> {
+        debugger;
+        this.setState({
+            playersCommitted: e.map(x=>x.id)
         })
     }
     changeDate =(e)=> {
@@ -54,10 +62,10 @@ export class CreateProject extends Component {
             <div className='game-types'>
                 <label htmlFor="title">Game Type</label>
                 <GameTypes value={this.state.gameType} id="game-types"/>
-                <div className="players-number">
-                    <label htmlFor="required-players">Required number of players</label>
-                    <input type="number" id="required-players" step="1" defaultValue="10"/>
-                </div>
+                
+                <label className='players' htmlFor="required-players">Required number of players</label>
+                <input type="number" id="required-players" step="1" defaultValue="10" min="2"/>
+                <PlayerList onSelectUser={this.changePlayers}/>
             </div>
             
 
