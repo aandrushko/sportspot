@@ -6,4 +6,10 @@
     width: 40%;
     padding-left: 40px;
     display: inline-block;
+    top: -40px;
+    white-space: nowrap;
+}
+.players-number {
+    display: inline-block;
+    padding-top: 15px;
 }

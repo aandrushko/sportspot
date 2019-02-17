@@ -49,12 +49,17 @@ export class CreateProject extends Component {
             <h5 className="grey-text text-darken-3">Create Project</h5>
           
             <label htmlFor="title">Title</label>
-            <input onChange={this.changeField} type="text" id="title" />
+            <input onChange={this.changeField} placeholder="Cool title" type="text" id="title" />
 
             <div className='game-types'>
                 <label htmlFor="title">Game Type</label>
-                <GameTypes value={this.state.gameType}/>
+                <GameTypes value={this.state.gameType} id="game-types"/>
+                <div className="players-number">
+                    <label htmlFor="required-players">Required number of players</label>
+                    <input type="number" id="required-players" step="1" defaultValue="10"/>
+                </div>
             </div>
+            
 
             <div className='calendar'>
                 <label htmlFor="date">Game Date</label>
