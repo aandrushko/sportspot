@@ -9,6 +9,7 @@ const SignInLinks = (props) =>{
     return (
         <ul className="right">
             <li><NavLink to='/newproject'>New Project</NavLink></li>
+            <li><NavLink to='/teamGrid'>Team Grid</NavLink></li>
             <li><a onClick={()=> props.signOut()}>Log Out</a></li>
             <li><NavLink to='/' className="btn btn-floating pink light-1"> {props.firebase.auth.email.slice(0,2).toUpperCase()}</NavLink></li>
         </ul>
