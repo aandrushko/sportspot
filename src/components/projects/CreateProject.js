@@ -15,7 +15,7 @@ export class CreateProject extends Component {
             gameCreator: 'userID3',
             date: new Date().getTime(), // new Date().getTime()
             commitments: 8, // number of players who already commited,
-            gameType: 'Football',
+            gameType: 1,
             gameDuration: 60, //duration in minutes,
             playersCommitted: ['userID1','userID2','userID3'],
             notes: 'Roman pls bring ball'     
@@ -27,26 +27,28 @@ export class CreateProject extends Component {
         this.props.createProject(this.state)
     }
     changeField =(e)=> {
-        debugger;
         this.setState({
             [e.target.id]: e.target.value
         })
     }
     changePlayers =(e)=> {
-        debugger;
         this.setState({
             playersCommitted: e.map(x=>x.id)
-        })
+        });
     }
     changeDate =(e)=> {
         this.setState({
             date: e.getTime()
         });
+        console.log(this.state.date);
     }
     disableInactiveDays = (date) => {
         let yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         return date.getTime() < yesterday;
+    }
+    changeType = (e) => {
+        this.setState({gameType: e.value});
     }
     
     render() {
@@ -61,10 +63,11 @@ export class CreateProject extends Component {
 
             <div className='game-types'>
                 <label htmlFor="title">Game Type</label>
-                <GameTypes value={this.state.gameType} id="game-types"/>
+                <GameTypes onChangeType={this.changeType} value={this.state.gameType} />
                 
                 <label className='players' htmlFor="required-players">Required number of players</label>
-                <input type="number" id="required-players" step="1" defaultValue="10" min="2"/>
+                <input onChange={this.changeField} value={this.state.commitments} type="number" id="commitments" step="1" min="2"/>
+
                 <PlayerList onSelectUser={this.changePlayers}/>
             </div>
             

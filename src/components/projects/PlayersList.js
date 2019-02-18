@@ -12,7 +12,7 @@ class PlayerList extends Component {
     render() {
         return (
             <div className="players">
-            {console.log(this.props.users)}
+            {console.log(this.props.projects)}
                 <Select onChange={e => this.handleChange(e)} options={this.props.users}
                         getOptionValue={option => option.id} getOptionLabel={option => option.firstName + ' ' + option.lastName} isMulti />
             </div>
@@ -24,13 +24,15 @@ const mapStateToProps = (state) => {
     return {
         ...state,
         auth: state.firebase.auth,
-        users: state.firestore.ordered.users
+        users: state.firestore.ordered.users,
+        projects: state.firestore.ordered.projects
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'users' }
+        { collection: 'users' },
+        {collection: 'projects'}
     ])
 )(PlayerList)
