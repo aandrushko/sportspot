@@ -3,7 +3,7 @@ import {deleteProject} from '../../store/actions/projectActions'
 import {connect} from 'react-redux';
 
 const ProjectSummary = (props) => {
-    
+    console.log(props)
     return (
         <div className="card z-depth-0 project-summary">
                 <div className="card-content  grey-text text-darken-darken-3">

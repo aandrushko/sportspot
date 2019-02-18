@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/authActions';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
 
 export class SignIn extends Component {
     state={
         email: '',
         password: ''
     }
-    submitForm =(e)=> {        
+    submitForm =(e)=> {
+        console.log(this.state)
         e.preventDefault()
-        this.props.signIn(this.state);
     }
     changeField =(e)=> {
         this.setState({
             [e.target.id]: e.target.value
-        });
+        })
+        console.log(this.state[e.target.id])
     }
     render() {
-    // check Auth state
-    
-    if (this.props.firebase.auth.uid) return <Redirect to='/'/>
-
     return (
       <div className="container">
         <form onSubmit={this.submitForm} className="white">
@@ -42,15 +36,5 @@ export class SignIn extends Component {
     )
   }
 }
-const mapStateToProps = (state) => {
-    return {
-        ...state,        
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        signIn: (creds)=> dispatch(signIn(creds))
-    }
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn)
+export default SignIn

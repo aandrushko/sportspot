@@ -1,27 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignInLinks from './SignInLinks';
-import SignOutLiks from './SignOutLinks'
-import { connect } from 'react-redux';
+import SignUpLiks from './SignOutLinks'
 
-
-const Navbar = (props) =>{
-    const { auth } = props;
+const Navbar = () =>{
     return (
         <nav className="nav-wrapper grey darken-3">
         <div className="container">
             <Link to='/' className='brand-logo'>
-                SportSpot
+                Marioplan
             </Link>
-            { auth.isEmpty ? <SignOutLiks/> : <SignInLinks/> }
+            <SignInLinks/>            
+            <SignUpLiks/>
+                        
         </div>
         </nav>
     )
 }
-const mapStateToProps = (state) =>{
-    return {
-        auth: state.firebase.auth
-    }
-}
-
-export default connect(mapStateToProps)(Navbar)
+export default Navbar
