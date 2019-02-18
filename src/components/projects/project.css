@@ -1,0 +1,13 @@
+.game-types {
+    width: 35%;
+    display: inline-table;
+}
+.calendar {
+    width: 40%;
+    padding-left: 40px;
+    display: inline-table;
+}
+.players {
+    display: block;
+    padding-top: 15px;
+}
