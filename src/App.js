@@ -22,9 +22,9 @@ class App extends Component {
             <Route path='/signin' component={SignIn}/>
             <Route path='/signup' component={SignUp}/>
             <Route path='/newproject' component={CreateProject}/>
-            <Route path='userdetails/:id' component= {UserDetails}/>
             <Route path='/teamGrid' component={TeamGrid}/>
             <Route path='/newteam' component={CreateTeam}/>
+            <Route path='/userdetails' component= {UserDetails}/>
           </Switch>
           
         </div>        
