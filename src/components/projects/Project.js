@@ -24,7 +24,7 @@ const Project = (props) => {
                 {props.project.capacity}
               </props.CustomTableCell>
               <props.CustomTableCell align="right">
-                {props.project.date}
+                {(new Date(props.project.date)).toLocaleDateString()}
               </props.CustomTableCell>
               <props.CustomTableCell align="right">
                 {props.project.notes}
