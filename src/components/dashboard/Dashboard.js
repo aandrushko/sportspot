@@ -13,11 +13,11 @@ class Dashboard extends Component {
         if(!this.props.auth.uid) return <Redirect to='/signin'/>
         return (
             <div className="dashbord container">
-                <div className="row">
+                {/* <div className="row">
                     <Filters projects={this.props.projects}/>
-                </div>    
+                </div>     */}
                 <div className="row">
-                    <ProjectList projects={this.props.projects}/>
+                    <ProjectList projects={this.props.projects} uid = {this.props.auth.uid}/>
                     {/* <div className="col s12 m2 offset-m1">
                         <Notifications/>
                     </div> */}
@@ -30,8 +30,7 @@ const mapStateToProps = (state) => {
     return {
         ...state,
         auth: state.firebase.auth,
-        projects: state.project.projects
-        //projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects
     }
 }
 

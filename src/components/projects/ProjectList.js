@@ -5,10 +5,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TablePagination from '@material-ui/core/TablePagination';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -52,6 +52,7 @@ const styles = theme => ({
     };
 
     render() {
+      if(!this.props.uid) return <Redirect to='/signin'/>
       const { classes } = this.props;
       return (
         <div className="poject-list section">
@@ -70,13 +71,13 @@ const styles = theme => ({
               </TableHead>
               <TableBody>
                 {this.props.projects && this.props.projects.slice(this.state.page * this.state.rowsPerPage,this.state.rowsPerPage).map(project =>
-                  (<Project project={project} CustomTableCell={CustomTableCell} />))}
+                  (<Project project={project} uid ={this.props.uid} CustomTableCell={CustomTableCell} />))}
               </TableBody>
             </Table>
-            <TablePagination
+            {/* <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={this.props.projects.length}
+              count={100}
               rowsPerPage={this.state.rowsPerPage}
               page={this.state.page}
               backIconButtonProps={{
@@ -87,7 +88,7 @@ const styles = theme => ({
               }}
               onChangePage={this.handleChangePage}
               onChangeRowsPerPage={this.handleChangeRowsPerPage}
-            />
+            /> */}
           </Paper>
         </div>
       )

@@ -3,8 +3,10 @@ import {deleteProject} from '../../store/actions/projectActions'
 import {connect} from 'react-redux';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import { Redirect } from 'react-router-dom';
 
 const Project = (props) => {
+  if(!props.uid) return <Redirect to='/signin'/>
       return (        
             <TableRow key = {props.project.gameId}>
               <props.CustomTableCell align="right">
@@ -23,7 +25,7 @@ const Project = (props) => {
                 {props.project.capacity}
               </props.CustomTableCell>
               <props.CustomTableCell align="right">
-                {props.project.date}
+                {new Date(props.project.date).toISOString().slice(0,10)}
               </props.CustomTableCell>
               <props.CustomTableCell align="right">
                 {props.project.notes}
