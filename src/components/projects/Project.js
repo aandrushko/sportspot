@@ -5,9 +5,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
 const Project = (props) => {
-    console.log(props)
-    return (        
-            <TableRow>
+      return (        
+            <TableRow key = {props.project.gameId}>
               <props.CustomTableCell align="right">
                 {props.project.gameType}
               </props.CustomTableCell>
