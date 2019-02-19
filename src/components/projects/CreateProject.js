@@ -15,6 +15,8 @@ export class CreateProject extends Component {
             gameCreator: 'userID3',
             date: new Date().getTime(), // new Date().getTime()
             commitments: 8, // number of players who already commited,
+            capacity: 8,
+            minNumberOfPlayers: 6,
             gameType: 1,
             gameDuration: 60, //duration in minutes,
             playersCommitted: ['userID1','userID2','userID3'],
@@ -67,6 +69,12 @@ export class CreateProject extends Component {
                 
                 <label className='players' htmlFor="required-players">Required number of players</label>
                 <input onChange={this.changeField} value={this.state.commitments} type="number" id="commitments" step="1" min="2"/>
+
+                <label className='players' htmlFor="required-players">Capacity</label>
+                <input onChange={this.changeField} value={this.state.capacity} type="number" id="capacity" step="1" min="2"/>
+
+                <label className='players' htmlFor="required-players">Min Number Of Players</label>
+                <input onChange={this.changeField} value={this.state.minNumberOfPlayers} type="number" id="minNumberOfPlayers" step="1" min="2"/>
 
                 <PlayerList onSelectUser={this.changePlayers}/>
             </div>

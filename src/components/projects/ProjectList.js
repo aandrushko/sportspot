@@ -8,6 +8,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -54,11 +57,25 @@ const ProjectList = (props) => {
         </TableHead>
         <TableBody>
         { props.projects && props.projects.map(project=>
-            (<Project project={project} CustomTableCell={CustomTableCell}/>)) }
+            (<Project key={project.id} project={project} CustomTableCell={CustomTableCell}/>)) }
         </TableBody>
         </Table>
         </Paper>
         </div>
     )
 }
-export default withStyles(styles)(ProjectList)
+
+const mapStateToProps = (state) => {
+  return {
+      ...state,
+      auth: state.firebase.auth,
+      projects: state.firestore.ordered.projects
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+      {collection: 'projects'}
+  ])
+)(withStyles(styles)(ProjectList))
